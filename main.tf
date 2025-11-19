@@ -22,14 +22,6 @@ locals {
   # Simple subnet CIDR allocation - first available /22 from pool
   # For 10.0.0.0/8 pool, this gives us 10.0.0.0/22
   subnet_cidr = cidrsubnet(var.subnet_cidr_pool, 14, 0)
-
-  # Merge user-provided tags with required tags
-  tags = merge(
-    var.tags,
-    {
-      "cast-omni-cluster-id" = var.cluster_id
-    }
-  )
 }
 
 # Data source to get access token and project from provider
