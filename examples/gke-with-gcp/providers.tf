@@ -6,17 +6,9 @@ terraform {
       source  = "castai/castai"
       version = ">= 8.1.0"
     }
-    aws = {
-      source  = "hashicorp/aws"
-      version = ">= 5.0"
-    }
     google = {
       source  = "hashicorp/google"
       version = ">= 4.0"
-    }
-    oci = {
-      source  = "oracle/oci"
-      version = "7.4.0"
     }
   }
 }
