@@ -42,9 +42,3 @@ variable "network_tags" {
   type        = list(string)
   default     = ["omni-enabled"]
 }
-
-variable "tags" {
-  description = "Labels to apply to GCP resources"
-  type        = map(string)
-  default     = {}
-}

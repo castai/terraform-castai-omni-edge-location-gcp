@@ -21,16 +21,8 @@ terraform {
   }
 }
 
-provider "aws" {
-  profile = var.aws_profile
-}
-
 provider "google" {
   project = var.google_project_id
-}
-
-provider "oci" {
-  region = var.oci_region
 }
 
 provider "helm" {

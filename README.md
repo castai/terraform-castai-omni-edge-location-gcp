@@ -86,7 +86,6 @@ No modules.
 | <a name="input_organization_id"></a> [organization\_id](#input\_organization\_id) | CAST AI organization ID | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | GCP region | `string` | n/a | yes |
 | <a name="input_subnet_cidr_pool"></a> [subnet\_cidr\_pool](#input\_subnet\_cidr\_pool) | CIDR pool for subnet allocation | `string` | `"10.0.0.0/8"` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | Labels to apply to GCP resources | `map(string)` | `{}` | no |
 
 ## Outputs
 
