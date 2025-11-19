@@ -19,16 +19,3 @@ variable "gke_cluster_region" {
 variable "google_project_id" {
   type = string
 }
-
-variable "aws_profile" {
-  type    = string
-  default = null
-}
-
-variable "oci_tenancy_id" {
-  type = string
-}
-
-variable "oci_region" {
-  type = string
-}
