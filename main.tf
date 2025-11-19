@@ -96,8 +96,6 @@ resource "google_service_account_key" "castai" {
 resource "google_compute_network" "main" {
   name                    = local.network_name
   auto_create_subnetworks = false
-
-  labels = local.tags
 }
 
 # Subnet
@@ -107,8 +105,6 @@ resource "google_compute_subnetwork" "main" {
   region        = var.region
   network       = google_compute_network.main.id
   description   = "Subnet created for Cast AI Omni edges in ${var.region}"
-
-  labels = local.tags
 }
 
 # =============================================================================
