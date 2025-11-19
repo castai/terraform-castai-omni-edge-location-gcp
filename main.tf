@@ -22,6 +22,14 @@ locals {
   # Simple subnet CIDR allocation - first available /22 from pool
   # For 10.0.0.0/8 pool, this gives us 10.0.0.0/22
   subnet_cidr = cidrsubnet(var.subnet_cidr_pool, 14, 0)
+
+  # Merge user-provided tags with required tags
+  tags = merge(
+    var.tags,
+    {
+      "cast-omni-cluster-id" = var.cluster_id
+    }
+  )
 }
 
 # Data source to get access token and project from provider
@@ -88,6 +96,8 @@ resource "google_service_account_key" "castai" {
 resource "google_compute_network" "main" {
   name                    = local.network_name
   auto_create_subnetworks = false
+
+  labels = local.tags
 }
 
 # Subnet
@@ -97,6 +107,8 @@ resource "google_compute_subnetwork" "main" {
   region        = var.region
   network       = google_compute_network.main.id
   description   = "Subnet created for Cast AI Omni edges in ${var.region}"
+
+  labels = local.tags
 }
 
 # =============================================================================
