@@ -57,8 +57,4 @@ module "castai_gcp_edge_location" {
   organization_id = module.castai-gke-cluster.organization_id
 
   region = "europe-west4"
-
-  tags = {
-    ManagedBy = "terraform"
-  }
 }
