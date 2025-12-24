@@ -109,7 +109,7 @@ resource "google_compute_firewall" "allow" {
 
   allow {
     protocol = "tcp"
-    ports    = ["443", "6443"]
+    ports    = ["6443"]
   }
 
   allow {
