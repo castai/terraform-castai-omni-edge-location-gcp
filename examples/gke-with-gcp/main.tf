@@ -8,8 +8,6 @@ data "google_container_cluster" "gke" {
   project  = data.google_project.current.project_id
 }
 
-data "aws_region" "current" {}
-
 # =============================================================================
 # Onboard cluster to CAST AI
 # =============================================================================
