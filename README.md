@@ -41,15 +41,6 @@ module "castai_gcp_edge_location" {
 | <a name="requirement_http"></a> [http](#requirement\_http) | >= 3.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0 |
 
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_castai"></a> [castai](#provider\_castai) | 8.2.1 |
-| <a name="provider_google"></a> [google](#provider\_google) | 7.12.0 |
-| <a name="provider_http"></a> [http](#provider\_http) | 3.5.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.7.2 |
-
 ## Modules
 
 No modules.
