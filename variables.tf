@@ -42,3 +42,9 @@ variable "network_tags" {
   type        = list(string)
   default     = ["omni-enabled"]
 }
+
+variable "instance_service_account" {
+  description = "GCP service account email to be attached to edge instances. It can be used to grant permissions to access other GCP resources"
+  type        = string
+  default     = ""
+}

@@ -143,6 +143,7 @@ resource "castai_edge_location" "this" {
   # GCP cloud provider configuration
   gcp = {
     project_id                            = data.google_client_config.current.project
+    instance_service_account              = var.instance_service_account
     client_service_account_json_base64_wo = google_service_account_key.castai.private_key
     network_name                          = google_compute_network.main.name
     subnet_name                           = google_compute_subnetwork.main.name
