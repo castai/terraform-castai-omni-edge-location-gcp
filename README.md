@@ -36,7 +36,7 @@ module "castai_gcp_edge_location" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_castai"></a> [castai](#requirement\_castai) | >= 8.1.1 |
+| <a name="requirement_castai"></a> [castai](#requirement\_castai) | >= 8.10.0 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | >= 4.0 |
 | <a name="requirement_http"></a> [http](#requirement\_http) | >= 3.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0 |
@@ -68,6 +68,7 @@ No modules.
 | <a name="input_cluster_id"></a> [cluster\_id](#input\_cluster\_id) | CAST AI cluster ID | `string` | n/a | yes |
 | <a name="input_description"></a> [description](#input\_description) | Description of the edge location | `string` | `null` | no |
 | <a name="input_firewall_source_ranges"></a> [firewall\_source\_ranges](#input\_firewall\_source\_ranges) | Source IP ranges for firewall ingress rules | `list(string)` | <pre>[<br/>  "0.0.0.0/0"<br/>]</pre> | no |
+| <a name="input_instance_service_account"></a> [instance\_service\_account](#input\_instance\_service\_account) | GCP service account email to be attached to edge instances. It can be used to grant permissions to access other GCP resources | `string` | `""` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name for the edge location. If not provided, will be auto-generated | `string` | `null` | no |
 | <a name="input_network_tags"></a> [network\_tags](#input\_network\_tags) | Network tags for firewall rules | `list(string)` | <pre>[<br/>  "omni-enabled"<br/>]</pre> | no |
 | <a name="input_organization_id"></a> [organization\_id](#input\_organization\_id) | CAST AI organization ID | `string` | n/a | yes |
