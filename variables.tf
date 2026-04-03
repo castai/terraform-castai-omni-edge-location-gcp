@@ -25,16 +25,10 @@ variable "region" {
   type        = string
 }
 
-variable "subnet_cidr_pool" {
-  description = "CIDR pool for subnet allocation"
+variable "subnet_cidr" {
+  description = "CIDR block for the edge location subnet"
   type        = string
-  default     = "10.0.0.0/8"
-}
-
-variable "firewall_source_ranges" {
-  description = "Source IP ranges for firewall ingress rules"
-  type        = list(string)
-  default     = ["0.0.0.0/0"]
+  default     = "10.0.0.0/20"
 }
 
 variable "network_tags" {
@@ -47,4 +41,16 @@ variable "instance_service_account" {
   description = "GCP service account email to be attached to edge instances. It can be used to grant permissions to access other GCP resources"
   type        = string
   default     = ""
+}
+
+
+variable "control_plane" {
+  description = <<-EOT
+    Edge location control plane configuration.
+    - ha (bool): enable high availability mode for the Edge location control plane (default: true)
+  EOT
+  type = object({
+    ha = optional(bool, true)
+  })
+  default = {}
 }

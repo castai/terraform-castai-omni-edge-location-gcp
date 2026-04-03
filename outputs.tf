@@ -14,5 +14,7 @@ output "gcp_resources" {
     project_id   = data.google_client_config.current.project
     network_name = google_compute_network.main.name
     subnet_name  = google_compute_subnetwork.main.name
+    router_name  = google_compute_router.main.name
+    nat_ip       = google_compute_address.nat.address
   }
 }
