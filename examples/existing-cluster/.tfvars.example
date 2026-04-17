@@ -1,0 +1,11 @@
+castai_api_token = "your-castai-api-token"
+castai_api_url   = "your-castai-api-url"
+organization_id  = "your-castai-organization-id"
+cluster_id       = "your-castai-cluster-id"
+
+gcp_project_id   = "your-gcp-project-id"
+region           = "your-gcp-region"
+
+# name           = "my-edge-location"       # optional, auto-generated if omitted
+# description    = "My GCP edge location"   # optional
+# control_plane  = { ha = true }            # optional, HA enabled by default
