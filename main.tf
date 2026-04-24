@@ -162,7 +162,7 @@ resource "castai_edge_location" "this" {
     }
   ]
 
-  control_plane = var.control_plane
+  control_plane      = var.control_plane
   control_plane_mode = "SHARED"
 
   # GCP cloud provider configuration
@@ -175,4 +175,16 @@ resource "castai_edge_location" "this" {
     subnet_cidr                  = var.subnet_cidr
     network_tags                 = var.network_tags
   }
+
+  # Ensure IAM and networking resources are destroyed only after the edge location
+  # is deleted. Without this, `terraform destroy` removes IAM impersonation bindings
+  # in parallel with the edge location, leaving user unable to clean up active edges 
+  # without manually restoring those bindings.
+  depends_on = [
+    google_service_account_iam_member.castai_token_creator,
+    google_project_iam_member.castai_compute_instance_admin,
+    google_project_iam_member.castai_service_account_user,
+    google_compute_router_nat.main,
+    google_compute_firewall.allow_tag,
+  ]
 }
