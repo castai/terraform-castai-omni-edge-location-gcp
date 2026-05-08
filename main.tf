@@ -164,6 +164,7 @@ resource "castai_edge_location" "this" {
 
   control_plane      = var.control_plane
   control_plane_mode = "SHARED"
+  networking         = var.networking
 
   # GCP cloud provider configuration
   gcp = {
