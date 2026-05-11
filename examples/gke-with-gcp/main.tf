@@ -22,7 +22,7 @@ module "castai-gke-iam" {
 
 module "castai-gke-cluster" {
   source  = "castai/gke-cluster/castai"
-  version = "~> 9"
+  version = "~> 10"
 
   api_url          = var.castai_api_url
   castai_api_token = var.castai_api_token
@@ -41,7 +41,7 @@ module "castai-gke-cluster" {
     }
   }
 
-  // TODO: enable omni
+  install_omni = true
 }
 
 # =============================================================================
@@ -55,4 +55,6 @@ module "castai_gcp_edge_location" {
   organization_id = module.castai-gke-cluster.organization_id
 
   region = "europe-west4"
+
+  depends_on = [module.castai-gke-cluster]
 }
