@@ -218,10 +218,11 @@ resource "castai_edge_configuration_default" "this" {
   cluster_id       = var.cluster_id
   edge_location_id = castai_edge_location.this.id
   configuration_id = castai_edge_configuration.this[var.default_edge_configuration_name].id
-}
 
-variable "default_edge_configuration_name" {
-  type        = string
-  description = "Name of the default edge configuration"
-  default     = ""
+  lifecycle {
+    precondition {
+      condition     = var.default_edge_configuration_name == "" || can(castai_edge_configuration.this[var.default_edge_configuration_name])
+      error_message = "The specified default_edge_configuration_name '${var.default_edge_configuration_name}' does not match any key in var.edge_configurations."
+    }
+  }
 }
