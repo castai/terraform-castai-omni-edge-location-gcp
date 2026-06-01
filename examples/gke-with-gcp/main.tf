@@ -51,10 +51,23 @@ module "castai-gke-cluster" {
 module "castai_gcp_edge_location" {
   source = "../.."
 
-  cluster_id      = module.castai-gke-cluster.cluster_id
-  organization_id = module.castai-gke-cluster.organization_id
+  cluster_id                      = module.castai-gke-cluster.cluster_id
+  organization_id                 = module.castai-gke-cluster.organization_id
+  region                          = "europe-west4"
+  default_edge_configuration_name = "gpu"
 
-  region = "europe-west4"
+  edge_configurations = {
+    gpu = {
+      name               = "GPU configuration"
+      image_id           = "projects/ml-images/global/images/family/common-gpu"  # GPU-enabled GCP image
+      boot_disk_size_gib = 200
+      labels = {
+        workload    = "gpu"
+        environment = "production"
+      }
+      user_data_base64 = "IyEvYmluL2Jhc2gKCmVjaG8gImhlbGxvIHdvcmxkIGZyb20gY3VzdG9tIHNjcmlwdCI="
+    }
+  }
 
   depends_on = [module.castai-gke-cluster]
 }

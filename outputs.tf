@@ -18,3 +18,10 @@ output "gcp_resources" {
     nat_ip       = google_compute_address.nat.address
   }
 }
+
+output "edge_configuration_ids" {
+  description = "Map of edge configuration IDs by configuration key"
+  value = {
+    for k, v in castai_edge_configuration.this : k => v.id
+  }
+}

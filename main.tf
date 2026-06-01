@@ -189,3 +189,40 @@ resource "castai_edge_location" "this" {
     google_compute_firewall.allow_tag,
   ]
 }
+
+# =============================================================================
+# CAST AI Edge Configuration (GCP)
+# =============================================================================
+
+resource "castai_edge_configuration" "this" {
+  for_each = var.edge_configurations
+
+  organization_id  = var.organization_id
+  cluster_id       = var.cluster_id
+  edge_location_id = castai_edge_location.this.id
+  name             = each.value.name
+  user_data_base64 = try(each.value.user_data_base64, null)
+  cri              = try(each.value.cri, {})
+
+  gcp = {
+    image_id           = try(each.value.image_id, null)
+    boot_disk_size_gib = try(each.value.boot_disk_size_gib, null)
+    labels             = try(each.value.labels, {})
+  }
+}
+
+resource "castai_edge_configuration_default" "this" {
+  count = var.default_edge_configuration_name != "" ? 1 : 0
+
+  organization_id  = var.organization_id
+  cluster_id       = var.cluster_id
+  edge_location_id = castai_edge_location.this.id
+  configuration_id = castai_edge_configuration.this[var.default_edge_configuration_name].id
+
+  lifecycle {
+    precondition {
+      condition     = var.default_edge_configuration_name == "" || can(castai_edge_configuration.this[var.default_edge_configuration_name])
+      error_message = "The specified default_edge_configuration_name '${var.default_edge_configuration_name}' does not match any key in var.edge_configurations."
+    }
+  }
+}
