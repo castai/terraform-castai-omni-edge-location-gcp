@@ -71,7 +71,7 @@ variable "edge_configurations" {
     Map of GCP edge configurations to create for this edge location.
 
     Each configuration supports the following attributes:
-    - name (string, optional): Name of the edge configuration. Defaults to the map key.
+    - name (string, required): Name of the edge configuration.
     - image_id (string, optional): Boot disk image name or family for edge instances (e.g., "projects/debian-cloud/global/images/family/debian-12" or "cos-101-lts").
     - boot_disk_size_gib (number, optional): Boot disk size in GiB.
     - user_data_base64 (string, optional): Base64 encoded user data to run on the edge as part of bootstrap. The payload must start with either `#cloud-config` (cloud-init YAML) or `#!` (shell script with a shebang).
@@ -96,7 +96,7 @@ variable "edge_configurations" {
     }
   EOT
   type = map(object({
-    name               = optional(string)
+    name               = string
     image_id           = optional(string)
     boot_disk_size_gib = optional(number)
     user_data_base64   = optional(string)

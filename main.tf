@@ -202,7 +202,7 @@ resource "castai_edge_configuration" "this" {
   edge_location_id = castai_edge_location.this.id
   name             = try(each.value.name, each.key)
   user_data_base64 = try(each.value.user_data_base64, null)
-  cri              = try(each.value.cri, null)
+  cri              = try(each.value.cri, {})
 
   gcp = {
     image_id           = try(each.value.image_id, null)
