@@ -70,7 +70,7 @@ module "castai_gcp_edge_location" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
 | <a name="requirement_castai"></a> [castai](#requirement\_castai) | >= 8.39.1 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | >= 4.0 |
 | <a name="requirement_http"></a> [http](#requirement\_http) | >= 3.0 |
