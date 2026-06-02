@@ -51,9 +51,10 @@ module "castai-gke-cluster" {
 module "castai_gcp_edge_location" {
   source = "../.."
 
-  cluster_id                      = module.castai-gke-cluster.cluster_id
-  organization_id                 = module.castai-gke-cluster.organization_id
-  region                          = "europe-west4"
+  cluster_id      = module.castai-gke-cluster.cluster_id
+  organization_id = module.castai-gke-cluster.organization_id
+  region          = "europe-west4"
+
   default_edge_configuration_name = "gpu"
 
   edge_configurations = {
