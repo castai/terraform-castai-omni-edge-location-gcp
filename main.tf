@@ -201,13 +201,13 @@ resource "castai_edge_configuration" "this" {
   cluster_id       = var.cluster_id
   edge_location_id = castai_edge_location.this.id
   name             = each.value.name
-  user_data_base64 = try(each.value.user_data_base64, null)
-  cri              = try(each.value.cri, {})
+  user_data_base64 = each.value.user_data_base64
+  cri              = each.value.cri
 
   gcp = {
-    image_id           = try(each.value.image_id, null)
-    boot_disk_size_gib = try(each.value.boot_disk_size_gib, null)
-    labels             = try(each.value.labels, {})
+    image_id           = each.value.image_id
+    boot_disk_size_gib = each.value.boot_disk_size_gib
+    labels             = each.value.labels
   }
 }
 
@@ -218,11 +218,4 @@ resource "castai_edge_configuration_default" "this" {
   cluster_id       = var.cluster_id
   edge_location_id = castai_edge_location.this.id
   configuration_id = castai_edge_configuration.this[var.default_edge_configuration_name].id
-
-  lifecycle {
-    precondition {
-      condition     = var.default_edge_configuration_name == "" || can(castai_edge_configuration.this[var.default_edge_configuration_name])
-      error_message = "The specified default_edge_configuration_name '${var.default_edge_configuration_name}' does not match any key in var.edge_configurations."
-    }
-  }
 }
