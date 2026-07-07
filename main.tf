@@ -155,6 +155,7 @@ resource "castai_edge_location" "this" {
   cluster_id      = var.cluster_id
   organization_id = var.organization_id
   description     = var.description != null ? var.description : "GCP edge location onboarded by Terraform"
+  addons          = var.addons
   zones = [
     for zone in local.available_zones : {
       id   = tostring(zone.id)
