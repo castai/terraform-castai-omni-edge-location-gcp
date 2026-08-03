@@ -1,5 +1,5 @@
 module "castai_gcp_edge_location" {
-  source = "../.."
+  source = "castai/omni-edge-location-gcp/castai"
 
   cluster_id      = var.cluster_id
   organization_id = var.organization_id
