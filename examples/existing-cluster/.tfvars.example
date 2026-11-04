@@ -9,3 +9,7 @@ region           = "your-gcp-region"
 # name           = "my-edge-location"       # optional, auto-generated if omitted
 # description    = "My GCP edge location"   # optional
 # control_plane  = { ha = true }            # optional, HA enabled by default
+# liqo = {                                  # optional
+#   gateway_replicas = 2
+#   gateway_server   = { external_address = "gw.edge.example.com" }
+# }
